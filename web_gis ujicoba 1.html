@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web GIS Data Spasial</title>
+
+    <!-- Leaflet CSS (Library Peta) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        /* Mengatur ukuran tampilan peta agar memenuhi layar */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100vh; /* Memenuhi tinggi layar browser */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Wadah Tempat Peta Ditampilkan -->
+    <div id="map"></div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. Inisialisasi Peta (Koordinat Pusat Indonesia & Zoom Level)
+        var map = L.map('map').setView([-2.5489, 118.0149], 5);
+
+        // 2. Memanggil Peta Dasar (Basemap OpenStreetMap)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // 3. Contoh Menambahkan Marker Sederhana (Titik Lokasi)
+        var marker = L.marker([-7.0051, 110.4381]).addTo(map); // Koordinat Semarang
+        marker.bindPopup("<b>Web GIS Aktif!</b><br>Titik lokasi berhasil ditambahkan.").openPopup();
+    </script>
+
+</body>
+</html>
